@@ -1,0 +1,9 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: bfcBvfU7OjanUXKR9YXy61BJVZEq1Y9jm1g/LIxzdrGn6N4kmwEfbTeYRnJChNXO7HdYmVC5uAI9ks4Xhe6nhjUO8i6hAL7DU1qFE19HoG6vd93ERwvkFlFGZTe3SLsyaNijwmNCg7F4I3MllF8e7l7xhJNkS0+/6x3I5q9/1dc893fJvaI0oEZ2mUC6H/PyOIHnN6fQzqHVKvI64yRr72w+P3j+/NqNLWYgjzhQTC4/5e15jKY9ZHKsHM7VIf77pfCm2Wbb1Xu7iMddhVBcoKmXtLt8hEzdJ6N/7BrgL+H2gGRkXIo/eCfUQJnFhQRvd+3nSDmp21FUY9T2IF0kHiSpePm7mNZelnYUHSLvFjDPBegB8qAhRpw4+WU3uxU5WyZWmyO+tdztPiuRTBdfP3IflujG8G4YO7Mx5Q8Cl9BZzggPz/X5HKfPGcqi8BAi0y9+DTSqXuvfEjk+p+JIHDbxYWtXR3XWXQHwcPHTKyWNQp5m3SC922rLcgwewRlE+wBa3kno0LUn5r5vYvbv5SilGGauD9e/MmTgofvCtHUFPYHXTA+bLosXL7/pszwlHq4g5ga6zWFTo+YjDRGycjdd/O68fslRitkK/SDylmqxEF+clSXonSVjRGu7ZmWlHKoqpkUeDUNzUmFswp9AK4wdnaic8L/vTf+aHOpqTBQ=
+  app: frozen-retreat-78881
+  on:
+    repo: catperez81/blog-api
