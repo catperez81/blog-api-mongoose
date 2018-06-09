@@ -21,7 +21,10 @@ const BlogPosts = {
       id: uuid.v4(),
       title: title,
       content: content,
-      author: author,
+      author: {
+        firstName: firstName,
+        lastName: lastName,
+      }
       publishDate: publishDate || Date.now()
     };
     this.posts.push(post);
