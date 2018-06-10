@@ -1,8 +1,5 @@
 const {BlogPosts} = require('./models');
 
-// adding some blog posts to `BlogPosts` so there's something to retrieve.
-BlogPosts.create('blog title here', 'actual blog post gets written here', 'Cat Perez');
-
 // return all current Blog posts  
 router.get('/', (req, res) => {
   res.json(BlogPosts.get());
@@ -40,7 +37,7 @@ router.post('/', (req, res) => {
   const item = BlogPosts.create(req.body.title, req.body.content, req.body.author);
   res.status(201).json(item);
 
-  .then(BlogPosts => res.status(201).json(BlogPosts.serialize()))
+  then(BlogPosts => res.status(201).json(BlogPosts.serialize()))
   .catch(err => {
     console.error(err);
     res.status(500).json({ error: 'Something went wrong'});

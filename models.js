@@ -11,6 +11,7 @@ const blogSchema = mongoose.Schema({
   author: {
     firstname: String,
     lastname: String,
+    type: String,
     required: true
   },
   title: {type: String, required: true},
@@ -29,14 +30,14 @@ blogSchema.methods.serialize = function() {
 
   return {
     id: this.id,
-    author: this.name,
+    author: this.author,
     title: this.title,
     content: this.content,
     publishDate: this.publishDate
   };
 }
 
-const BlogPosts {
+const BlogPosts = {
   create: function(title, content, author, publishDate) {
     const post = {
       id: uuid.v4(),
@@ -45,7 +46,7 @@ const BlogPosts {
       author: {
         firstName: firstName,
         lastName: lastName,
-      }
+      },
       publishDate: publishDate || Date.now()
     };
     this.posts.push(post);
