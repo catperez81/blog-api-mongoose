@@ -3,6 +3,10 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const app = express();
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const { PORT, DATABASE_URL } = require('./config');
+const { BlogPost } = require('./models');
 
 const blogPostRouter = require('./BlogPostRouter');
 app.use(morgan('common'));
