@@ -12,6 +12,8 @@ const app = express();
 app.use(morgan('common'));
 app.use(express.json());
 
+const blogPostRouter = require('./BlogPostRouter');
+
 let server;
 
 function runServer(databaseUrl, port = PORT) {
