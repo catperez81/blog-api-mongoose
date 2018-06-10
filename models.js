@@ -1,11 +1,42 @@
 const uuid = require('uuid');
 
+const mongoose = require('mongoose');
+
 function StorageException(message) {
    this.message = message;
    this.name = "StorageException";
 }
 
-const BlogPosts = {
+const blogSchema = mongoose.Schema({
+  author: {
+    firstname: String,
+    lastname: String,
+    required: true
+  },
+  title: {type: String, required: true},
+  content: {type: String, required: true},
+  id: {type: String},
+  publishDate: {type: Date}
+});
+
+blogSchema.virtual('authorString').get(function() {
+  return `${this.author.firstname} ${this.author.lastname}`.trim()});
+
+// this is an *instance method* which will be available on all instances
+// of the model. This method will be used to return an object that only
+// exposes *some* of the fields we want from the underlying data
+blogSchema.methods.serialize = function() {
+
+  return {
+    id: this.id,
+    author: this.name,
+    title: this.title,
+    content: this.content,
+    publishDate: this.publishDate
+  };
+}
+
+const BlogPosts {
   create: function(title, content, author, publishDate) {
     const post = {
       id: uuid.v4(),
@@ -60,5 +91,7 @@ function createBlogPostsModel() {
   return storage;
 }
 
+const BlogPost = mongoose.model('BlogPost', blogSchema);
 
-module.exports = {BlogPosts: createBlogPostsModel()};
+
+module.exports = {BlogPost};
