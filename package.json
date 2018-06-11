@@ -17,7 +17,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "chai-http": "^4.0.0"
+    "chai-http": "^4.0.0",
+    "ng-faker": "^1.0.1"
   },
   "repository": {
     "type": "git",
