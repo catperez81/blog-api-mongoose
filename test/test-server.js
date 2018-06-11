@@ -12,7 +12,6 @@ const { TEST_DATABASE_URL } = require('../config');
 
 chai.use(chaiHttp);
 
-
 function tearDownDb() {
   return new Promise((resolve, reject) => {
     console.warn('Deleting database');
@@ -21,7 +20,6 @@ function tearDownDb() {
     .catch(err => reject(err));
   });
 }
-
 
 function seedBlogPostData() {
   console.info('seeding blog post data');
@@ -202,4 +200,5 @@ describe('blog posts API resource', function () {
       });
     });
   });
+  
 });
