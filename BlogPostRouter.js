@@ -1,6 +1,6 @@
 const {BlogPost} = require('./models');
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
 
 // return all current Blog posts  
 router.get('/', (req, res) => {

@@ -35,7 +35,7 @@ function seedBlogPostData() {
     });
   }
   // this will return a promise
-  return BlogPosts.insertMany(seedData);
+  return BlogPost.insertMany(seedData);
 }
 
 
@@ -200,5 +200,5 @@ describe('blog posts API resource', function () {
       });
     });
   });
-  
+
 });
