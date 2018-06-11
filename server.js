@@ -27,7 +27,6 @@ function runServer(databaseUrl, port = PORT) {
         resolve();
       })
         .on('error', err => {
-          console.log(err);
           mongoose.disconnect();
           reject(err);
         });

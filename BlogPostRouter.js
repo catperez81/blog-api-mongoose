@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router()
 
 // return all current Blog posts  
-router.get('/', (req, res) => {
+router.get('/blog-posts', (req, res) => {
   res.json(BlogPosts.get());
   BlogPosts.find().then(posts => {
     res.json(posts.map(post => post.serialize()));
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/:id', (req, res) => {
+router.get('/blog-posts/:id', (req, res) => {
   BlogPosts
     .findById(req.params.id)
     .then(post => res.json(post.serialize()))
@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/blog-posts', (req, res) => {
   const requiredFields = ['title','content', 'author'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/blog-posts/:id', (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'
@@ -69,7 +69,7 @@ router.put('/:id', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+router.delete('/blog-posts/:id', (req, res) => {
   BlogPosts.delete(req.params.id);
   console.log(`Deleted blog post \`${req.params.id}\``);
   res.status(204).json({ message: 'it worked'});
