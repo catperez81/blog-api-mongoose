@@ -13,6 +13,7 @@ app.use(morgan('common'));
 app.use(express.json());
 
 const blogPostRouter = require('./BlogPostRouter');
+app.use('/blog-posts', blogPostRouter);
 
 let server;
 
