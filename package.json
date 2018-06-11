@@ -4,7 +4,8 @@
   "description": "blog-api server project",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha --exit"
   },
   "author": "cat perez",
   "license": "ISC",
