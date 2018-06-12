@@ -9,19 +9,19 @@ function StorageException(message) {
 
 const blogSchema = mongoose.Schema({
   author: {
-    firstname: String,
-    lastname: String,
+    firstName: String,
+    lastName: String,
     type: String,
     required: true
   },
-  title: String,
-  content: String,
-  id: String,
-  publishDate: Date
+  title: {type: String, required: true},
+  content: {type: String, required: true},
+  id: {type: String},
+  publishDate: {type: Date}
 });
 
 blogSchema.virtual('authorString').get(function() {
-  return `${this.author.firstname} ${this.author.lastname}`.trim()});
+  return `${this.author.firstName} ${this.author.lastName}`.trim()});
 
 // this is an *instance method* which will be available on all instances
 // of the model. This method will be used to return an object that only
@@ -30,7 +30,10 @@ blogSchema.methods.serialize = function() {
 
   return {
     id: this._id,
-    author: this.author,
+    author: {
+      this.author.firstName,
+      this.author.lastName
+    }
     title: this.title,
     content: this.content,
     publishDate: this.publishDate
