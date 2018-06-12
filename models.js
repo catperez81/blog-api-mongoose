@@ -33,7 +33,7 @@ blogSchema.methods.serialize = function() {
     author: {
       firstName: this.author.firstName(),
       lastName: this.author.lastName()
-    }
+    },
     title: this.title,
     content: this.content,
     publishDate: this.publishDate
