@@ -14,10 +14,10 @@ const blogSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  title: {type: String, required: true},
-  content: {type: String, required: true},
-  id: {type: String},
-  publishDate: {type: Date}
+  title: String,
+  content: String,
+  id: String,
+  publishDate: Date
 });
 
 blogSchema.virtual('authorString').get(function() {

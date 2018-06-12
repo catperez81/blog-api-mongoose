@@ -63,28 +63,23 @@ describe('blog posts API resource', function () {
     it('should return all existing posts', function () {
       let res;
       return chai.request(app)
-      .get('/blog-posts')
+      .get('/')
       .then(_res => {
         res = _res;
         res.should.have.status(200);
-          // otherwise our db seeding didn't work
           res.body.should.have.lengthOf.at.least(1);
-
           return BlogPost.count();
         })
       .then(count => {
-          // the number of returned posts should be same
-          // as number of posts in DB
-          res.body.should.have.lengthOf(count);
-        });
+        res.body.should.have.lengthOf(count);
+      });
     });
 
     it('should return posts with right fields', function () {
-      // Strategy: Get back all posts, and ensure they have expected keys
 
       let resPost;
       return chai.request(app)
-      .get('/blog-posts')
+      .get('/')
       .then(function (res) {
 
         res.should.have.status(200);
@@ -96,8 +91,6 @@ describe('blog posts API resource', function () {
           post.should.be.a('object');
           post.should.include.keys('id', 'title', 'content', 'author', 'created');
         });
-          // just check one of the posts that its values match with those in db
-          // and we'll assume it's true for rest
           resPost = res.body[0];
           return BlogPost.findById(resPost.id);
         })
