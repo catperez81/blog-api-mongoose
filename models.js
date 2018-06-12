@@ -30,7 +30,10 @@ blogSchema.methods.serialize = function() {
 
   return {
     id: this._id,
-    author: this.author,
+    author: {
+      firstName: this.author.firstName(),
+      lastName: this.author.lastName()
+    }
     title: this.title,
     content: this.content,
     publishDate: this.publishDate
