@@ -10,9 +10,7 @@ function StorageException(message) {
 const blogSchema = mongoose.Schema({
   author: {
     firstName: String,
-    lastName: String,
-    type: String,
-    required: true
+    lastName: String
   },
   title: {type: String, required: true},
   content: {type: String, required: true},
