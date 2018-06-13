@@ -63,7 +63,7 @@ describe('blog posts API resource', function () {
     it('should return all existing posts', function () {
       let res;
       return chai.request(app)
-      .get('/')
+      .get('/blog-posts')
       .then(_res => {
         res = _res;
         res.should.have.status(200);
@@ -79,7 +79,7 @@ describe('blog posts API resource', function () {
 
       let resPost;
       return chai.request(app)
-      .get('/')
+      .get('/blog-posts')
       .then(function (res) {
 
         res.should.have.status(200);
