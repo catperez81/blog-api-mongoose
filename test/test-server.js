@@ -89,7 +89,7 @@ describe('blog posts API resource', function () {
 
         res.body.forEach(function (post) {
           post.should.be.a('object');
-          post.should.include.keys('id', 'title', 'content', 'author', 'created');
+          post.should.include.keys('id', 'title', 'content', 'author', 'publishDate');
         });
           resPost = res.body[0];
           return BlogPost.findById(resPost.id);
@@ -97,7 +97,7 @@ describe('blog posts API resource', function () {
       .then(post => {
         resPost.title.should.equal(post.title);
         resPost.content.should.equal(post.content);
-        resPost.author.should.equal(post.authorName);
+        resPost.author.should.equal(`${post.author.firstName} ${post.author.lastName}`);
       });
     });
   });
@@ -122,7 +122,7 @@ describe('blog posts API resource', function () {
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.include.keys(
-          'id', 'title', 'content', 'author', 'created');
+          'id', 'title', 'content', 'author', 'publishDate');
         res.body.title.should.equal(newPost.title);
           // cause Mongo should have created id on insertion
           res.body.id.should.not.be.null;
@@ -154,10 +154,10 @@ describe('blog posts API resource', function () {
       return BlogPost
       .findOne()
       .then(post => {
-        updateData.id = post.id;
-
+        updateData.id = post._id;
+        console.log(post);
         return chai.request(app)
-        .put(`/blog-posts/${post.id}`)
+        .put(`/blog-posts/${post._id}`)
         .send(updateData);
       })
       .then(res => {
@@ -182,11 +182,11 @@ describe('blog posts API resource', function () {
       .findOne()
       .then(_post => {
         post = _post;
-        return chai.request(app).delete(`/blog-posts/${post.id}`);
+        return chai.request(app).delete(`/blog-posts/${post._id}`);
       })
       .then(res => {
         res.should.have.status(204);
-        return BlogPost.findById(post.id);
+        return BlogPost.findById(post._id);
       })
       .then(_post => {
         should.not.exist(_post);
